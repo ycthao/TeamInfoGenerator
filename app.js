@@ -15,19 +15,23 @@ const employees = [];
 function generateTeam() {
     inquirer
         .prompt([
-
+            {
+                type: 'input',
+                name: 'name',
+                message: 'Enter employee name: '
+            },
+            {
+                type: 'list',
+                name: 'employees',
+                message: 'Employee role',
+                choices: ['Manager', 'Engineer', 'Intern'],
+            }
         ]
 
-        );
+        )
+    
 
 
+};
 
-
-
-
-
-
-
-
-}
-
+generateTeam();

@@ -25,11 +25,21 @@ function generateTeam() {
                 name: 'employees',
                 message: 'Employee role',
                 choices: ['Manager', 'Engineer', 'Intern'],
-            }
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'Enter employee email address: '
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: 'Enter employee id: '
+            },
+
         ]
 
         )
-    
 
 
 };

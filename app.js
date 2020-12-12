@@ -41,22 +41,49 @@ function generateTeam() {
         .then(function ({ name, role, id, email}) {
             let roleAnswer = "";
             if (role === "Engineer") {
-                roleAnswer = "GitHub username"
+                roleAnswer = "GitHub username";
+                inquirer
+                .prompt([
+                    {
+                        type: "input",
+                        name: "github",
+                        message: "What is employee's GitHub?"
+                    },
+
+                ]);
             } else if (role === "Intern") {
                 roleAnswer = "School name";
+                inquirer
+                .prompt([
+                    {
+                        type: "input",
+                        name: "school",
+                        message: "What is intern's school?"
+                    }]);
             } else {
-                roleAnswer = "Office number"
+                roleAnswer = "Office number";
+                inquirer
+                .prompt([
+                    {
+                        type: "input",
+                        name: "officeNumber",
+                        message: "What is manager's office number?"
+                    }]);
             }
-            inquirer
-            .prompt([
-                {
-                    type: "confirm",
-                    name: "addTeamMember",
-                    message: "would you like to add more team member?"
-                }
-            ])
+
         })
 
+
+
+
+        // inquirer
+        // .prompt([
+        //     {
+        //         type: "confirm",
+        //         name: "addTeamMember",
+        //         message: "would you like to add more team member?"
+        //     }
+        // ])
 
 
         

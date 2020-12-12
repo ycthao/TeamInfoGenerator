@@ -39,9 +39,9 @@ function generateTeam() {
 
         ])
         .then(function ({ name, role, id, email }) {
-            let roleAnswer = "";
+            let teamMember;
             if (role === "Engineer") {
-                roleAnswer = "GitHub username";
+                
                 inquirer
                     .prompt([
                         {
@@ -55,15 +55,23 @@ function generateTeam() {
                             message: "would you like to add more team member?"
                         }
                     ])
-                    .then(function ({ addTeamMember }) {
+                    .then(function ({ addTeamMember, github }) {
+                        teamMember = new Engineer(name, id, email, github)
+                        employees.push(teamMember);
                         if (addTeamMember) {
                             generateTeam();
                         } else {
-                            console.log("done");
+                            render(employees);
+                            fs.writeFile(outputPath, render(employees), (err) => {
+                                if (err) {
+                                    throw err;
+                                }
+                            });
+                            console.log("Succesfully created team information");
                         }
                     });
             } else if (role === "Intern") {
-                roleAnswer = "School name";
+                //roleAnswer = "School name";
                 inquirer
                     .prompt([
                         {
@@ -85,7 +93,7 @@ function generateTeam() {
                         }
                     });
             } else {
-                roleAnswer = "Office number";
+                //roleAnswer = "Office number";
                 inquirer
                     .prompt([
                         {

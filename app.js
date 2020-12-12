@@ -40,8 +40,9 @@ function generateTeam() {
         ])
         .then(function ({ name, role, id, email }) {
             let teamMember;
+
+            // Engineeer section
             if (role === "Engineer") {
-                
                 inquirer
                     .prompt([
                         {
@@ -70,8 +71,9 @@ function generateTeam() {
                             console.log("Succesfully created team information");
                         }
                     });
+            
+            // Intern Section
             } else if (role === "Intern") {
-                //roleAnswer = "School name";
                 inquirer
                     .prompt([
                         {
@@ -85,15 +87,18 @@ function generateTeam() {
                             message: "would you like to add more team member?"
                         }
                     ])
-                    .then(function ({ addTeamMember }) {
+                    .then(function ({ addTeamMember, school }) {
+                        teamMember = new Intern (name, id, email, school)
+                        employees.push(teamMember);
                         if (addTeamMember) {
                             generateTeam();
                         } else {
                             console.log("done");
                         }
                     });
+
+            // Manager section
             } else {
-                //roleAnswer = "Office number";
                 inquirer
                     .prompt([
                         {
@@ -107,7 +112,9 @@ function generateTeam() {
                             message: "would you like to add more team member?"
                         }
                     ])
-                    .then(function ({ addTeamMember }) {
+                    .then(function ({ addTeamMember, officeNumber }) {
+                        teamMember = new Manager (name, id, email, officeNumber)
+                        employees.push(teamMember);
                         if (addTeamMember) {
                             generateTeam();
                         } else {

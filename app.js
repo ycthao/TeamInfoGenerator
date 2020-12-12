@@ -37,9 +37,19 @@ function generateTeam() {
                 message: 'Enter employee id: '
             },
 
-        ]
+        ])
+        .then(function ({ name, role, id, email}) {
+            let roleAnswer = "";
+            if (role === "Engineer") {
+                roleAnswer = "GitHub username"
+            } else if (role === "Intern") {
+                roleAnswer = "School name";
+            } else {
+                roleAnswer = "Office number"
+            }
+        })
 
-        )
+        
 
 
 };

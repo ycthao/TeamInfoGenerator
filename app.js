@@ -61,7 +61,7 @@ function generateTeam() {
                     } else {
                         console.log("done");
                     }
-                })
+                });
             } else if (role === "Intern") {
                 roleAnswer = "School name";
                 inquirer
@@ -76,7 +76,14 @@ function generateTeam() {
                         name: "addTeamMember",
                         message: "would you like to add more team member?"
                     }
-                ]);
+                ])
+                .then(function ({addTeamMember}) {
+                    if (addTeamMember) {
+                        generateTeam();
+                    } else {
+                        console.log("done");
+                    }
+                });
             } else {
                 roleAnswer = "Office number";
                 inquirer
@@ -91,7 +98,14 @@ function generateTeam() {
                         name: "addTeamMember",
                         message: "would you like to add more team member?"
                     }
-                ]);
+                ])
+                .then(function ({addTeamMember}) {
+                    if (addTeamMember) {
+                        generateTeam();
+                    } else {
+                        console.log("done");
+                    }
+                });
             }
  
         })

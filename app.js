@@ -22,7 +22,7 @@ function generateTeam() {
             },
             {
                 type: 'list',
-                name: 'employees',
+                name: 'role',
                 message: 'Employee role',
                 choices: ['Manager', 'Engineer', 'Intern'],
             },
@@ -47,7 +47,17 @@ function generateTeam() {
             } else {
                 roleAnswer = "Office number"
             }
+            inquirer
+            .prompt([
+                {
+                    type: "confirm",
+                    name: "addTeamMember",
+                    message: "would you like to add more team member?"
+                }
+            ])
         })
+
+
 
         
 

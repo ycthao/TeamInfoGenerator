@@ -49,8 +49,19 @@ function generateTeam() {
                         name: "github",
                         message: "What is employee's GitHub?"
                     },
-
-                ]);
+                    {
+                        type: "confirm",
+                        name: "addTeamMember",
+                        message: "would you like to add more team member?"
+                    }
+                ])
+                .then(function ({addTeamMember}) {
+                    if (addTeamMember) {
+                        generateTeam();
+                    } else {
+                        console.log("done");
+                    }
+                })
             } else if (role === "Intern") {
                 roleAnswer = "School name";
                 inquirer
@@ -59,7 +70,13 @@ function generateTeam() {
                         type: "input",
                         name: "school",
                         message: "What is intern's school?"
-                    }]);
+                    },
+                    {
+                        type: "confirm",
+                        name: "addTeamMember",
+                        message: "would you like to add more team member?"
+                    }
+                ]);
             } else {
                 roleAnswer = "Office number";
                 inquirer
@@ -68,22 +85,19 @@ function generateTeam() {
                         type: "input",
                         name: "officeNumber",
                         message: "What is manager's office number?"
-                    }]);
+                    },
+                    {
+                        type: "confirm",
+                        name: "addTeamMember",
+                        message: "would you like to add more team member?"
+                    }
+                ]);
             }
-
+ 
         })
 
 
 
-
-        // inquirer
-        // .prompt([
-        //     {
-        //         type: "confirm",
-        //         name: "addTeamMember",
-        //         message: "would you like to add more team member?"
-        //     }
-        // ])
 
 
         
